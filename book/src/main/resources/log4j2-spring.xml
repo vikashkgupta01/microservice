@@ -1,0 +1,52 @@
+<Configuration>
+    <Appenders>
+        <RollingFile name="rollingFile"
+                     fileName="C:/Users/vikash_kumar1/app_logs/book_msg.log"
+                     filePattern="C:/Users/vikash_kumar1/app_logs/book_msg.%d{yyyy-MM-dd-HH-mm}.log.gz"
+                     ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="rollingFile"/>
+        </Root>
+    </Loggers>
+
+<Appenders>
+    <!-- Console Appender -->
+    <Console name="console" target="SYSTEM_OUT">
+        <PatternLayout>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+        </PatternLayout>
+    </Console>
+
+    <!-- RollingFile Appender -->
+    <RollingFile name="rollingFile"
+                 fileName="C:/Users/vikash_kumar1/app_logs/book_msg.log"
+                 filePattern="C:/Users/vikash_kumar1/app_logs/book_msg.%d{yyyy-MM-dd-HH-mm}.log.gz"
+                 ignoreExceptions="false">
+        <PatternLayout>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+        </PatternLayout>
+        <Policies>
+            <!-- You can add rollover policies if required -->
+        </Policies>
+        <DefaultRolloverStrategy max="5" />
+    </RollingFile>
+</Appenders>
+
+<Loggers>
+    <!-- Root logger configured to log at 'info' level and send logs to both appenders -->
+    <Root level="info">
+        <AppenderRef ref="console"/>
+        <AppenderRef ref="rollingFile"/>
+    </Root>
+</Loggers>
+</Configuration>
+

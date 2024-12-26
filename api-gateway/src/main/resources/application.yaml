@@ -1,0 +1,38 @@
+server:
+  port: 4444  # Gateway runs on port 8080
+
+
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # Enable dynamic routing using service discovery
+      routes:
+        # Example static route (optional for testing)
+        - id: book
+          uri: lb://book  # Use the service name from Eureka
+          predicates:
+            - Path=/book/**  # Route requests matching /books/** to Book-Service
+
+        - id: order
+          uri: lb://order
+          predicates:
+            - Path=/bookOrder/**  # Route requests matching /orders/** to Order-Service
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Eureka Server URL
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG

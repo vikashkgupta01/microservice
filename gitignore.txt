@@ -1,0 +1,11 @@
+# Ignore IDE and editor files
+.idea/
+.vscode/
+
+# Ignore build and dependency directories
+node_modules/
+target/
+build/
+
+# Other specific ignores for your project
+*.log

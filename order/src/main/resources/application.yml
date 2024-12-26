@@ -1,0 +1,68 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: order
+
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: HikariCP
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+
+
+
+#resilience4j.ratelimiter:
+#  instances:
+#    orderService:
+#      limitForPeriod: 2
+#      limitRefreshPeriod: 4s
+#      timeoutDuration: 0
+#      registerHealthIndicator: true
+#      eventConsumerBufferSize: 100
+
+#working resillence rate limitter
+#resilience4j.ratelimiter:
+#  instances:
+#    orderService:
+#      limitForPeriod: 10
+#      limitRefreshPeriod: 100s
+#      timeoutDuration: 10s
+#      registerHealthIndicator: true
+#      eventConsumerBufferSize: 100
+
+resilience4j.circuitbreaker:
+  instances:
+    book:
+      registerHealthIndicator: true
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000ms
+      ringBufferSizeInHalfOpenState: 10
+      ringBufferSizeInClosedState: 100
+    order:
+      registerHealthIndicator: true
+      failureRateThreshold: 40
+      waitDurationInOpenState: 5000ms
+      ringBufferSizeInHalfOpenState: 5
+      ringBufferSizeInClosedState: 50
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
