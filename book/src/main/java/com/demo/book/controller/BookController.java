@@ -75,11 +75,6 @@ public class BookController {
         logger.info("Application  started at ::"+port);
         //throw new RuntimeException("Book service temporary down!!!!");
        List<Book> books = bookService.getBook(authorName);
-<<<<<<< HEAD
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-=======
        bookService.printCache("booksRecord");
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
@@ -95,6 +90,5 @@ public class BookController {
 
     }
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 
 }

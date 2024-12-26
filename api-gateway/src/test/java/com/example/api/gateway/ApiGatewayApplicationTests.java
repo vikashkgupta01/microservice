@@ -3,10 +3,7 @@ package com.example.api.gateway;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-<<<<<<< HEAD
-=======
 /*
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 @SpringBootTest
 class ApiGatewayApplicationTests {
 
@@ -15,7 +12,4 @@ class ApiGatewayApplicationTests {
 	}
 
 }
-<<<<<<< HEAD
-=======
 */
->>>>>>> bc5fa73 (First commit with root directory and submodules)

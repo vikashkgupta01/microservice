@@ -1,11 +1,7 @@
 package com.demo.order.ordercontroller;
 
 import com.demo.order.bookclient.IBookClient;
-<<<<<<< HEAD
-//import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-=======
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,11 +24,8 @@ public class BookOrderController {
 
     private Logger logger = LoggerFactory.getLogger(BookOrderController.class);
 
-<<<<<<< HEAD
-=======
     private static final String ORDER_SERVICE ="orderService" ;
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
     @Autowired
     IBookClient bookClient;
 
@@ -47,12 +40,6 @@ public class BookOrderController {
     private ServletWebServerApplicationContext webServerAppContext;
 
 
-<<<<<<< HEAD
-    @GetMapping("/bookStock/{authorName}")
-    //@CircuitBreaker(name = "book", fallbackMethod = "getBookList")
-    @RateLimiter(name="order", fallbackMethod = "rateLimitterFallBack")
-    public String checkBookAvailbilty(@PathVariable String authorName){
-=======
 
 
     @CircuitBreaker(name = "book", fallbackMethod = "getBookList")
@@ -114,17 +101,12 @@ public class BookOrderController {
 
 /*
 public ResponseEntity<String> checkBookAvailbilty(@PathVariable String authorName){
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 
         int port = webServerAppContext.getWebServer().getPort();
 
         logger.info("Application  started at ::"+port);
 
         ResponseEntity<List<Book>> bookListResponse=bookClient.getBookList(authorName);
-<<<<<<< HEAD
-        System.out.println("boajdo sa"+bookListResponse);
-=======
->>>>>>> bc5fa73 (First commit with root directory and submodules)
         if(bookListResponse==null){
             throw new RuntimeException();
         }
@@ -132,34 +114,6 @@ public ResponseEntity<String> checkBookAvailbilty(@PathVariable String authorNam
         //return optionalBookList.ifPresentOrElse(data-> System.out.println("book available"),()-> System.out.println("Not Present"));
         return optionalBookList.map(data->{
             if(data.size()>0) {
-<<<<<<< HEAD
-                return "Book Available";
-            }
-            else {
-                return "Book not in stock";
-            }
-        }).orElse("Not Present");
-
-
-    }
-
-    public String rateLimitterFallBack(Exception ex) {
-        logger.warn("Fallback method called due to: ", ex.getSuppressed());
-        return "Book Service is temporary down!! "+ex.getMessage();  // Return fallback response
-    }
-
-    /*if(bookList.toString().length() > 0){
-        return "Book in stock";
-    }else{
-        return "Book not in stock or avilable";
-    }*/
-
-    @GetMapping("/hi")
-    public String getMessage(){
-        return "hello";
-    }
-}
-=======
                 return new ResponseEntity<>("Book Available", HttpStatus.OK);
             }else{
                 return new ResponseEntity<>("Not Found", HttpStatus.BAD_REQUEST);
@@ -190,4 +144,3 @@ public ResponseEntity<String> checkBookAvailbilty(@PathVariable String authorNam
         }).orElse(new ResponseEntity<>("Please check request",HttpStatus.BAD_REQUEST));
     }
  */
->>>>>>> bc5fa73 (First commit with root directory and submodules)

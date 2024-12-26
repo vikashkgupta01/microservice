@@ -17,14 +17,6 @@ public class BookClientFallBack implements IBookClient{
 
     private Logger logger = LoggerFactory.getLogger(BookClientFallBack.class);
 
-<<<<<<< HEAD
-    /*@Override
-    public ResponseEntity<String> testConnectivity(String name) {
-        return null;
-    }*/
-
-=======
->>>>>>> bc5fa73 (First commit with root directory and submodules)
     @Override
     public ResponseEntity<List<Book>> getBookList(String authorName) {
         logger.error("Book service temporary down!!!!");
@@ -32,8 +24,6 @@ public class BookClientFallBack implements IBookClient{
         return null;
     }
 
-<<<<<<< HEAD
-=======
     /*public ResponseEntity<String> getBookList(String authorName, Throwable throwable) {
         logger.error("Fallback triggered for getBookList: " + throwable.getMessage());
         return new ResponseEntity<>("Book service is temporarily unavailable", HttpStatus.SERVICE_UNAVAILABLE);
@@ -45,7 +35,6 @@ public class BookClientFallBack implements IBookClient{
     }*/
 
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
     /*
     @Override
     public ResponseEntity<List<Book>> getBookList(String authorName) {

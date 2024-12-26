@@ -5,34 +5,22 @@ import com.demo.book.dto.BookDto;
 import com.demo.book.entity.Book;
 import com.demo.book.exception.BookServiceException;
 import com.demo.book.repository.BookRepo;
-<<<<<<< HEAD
-import org.springframework.beans.factory.annotation.Autowired;
-=======
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
 import java.util.Map;
 import java.util.Set;
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 
 @Service
 public class BookService {
 
-<<<<<<< HEAD
-    @Autowired
-    BookRepo bookRepo;
-
-=======
     private org.slf4j.Logger logger = LoggerFactory.getLogger(BookService.class);
 
     @Autowired
@@ -41,7 +29,6 @@ public class BookService {
     @Autowired
     private CacheManager cacheManager;
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
     //@Autowired
     private TxnRefGenerationSerive txnRefGenerationSerive;
 
@@ -72,11 +59,8 @@ public class BookService {
             book.setLastModifiedDt(LocalDate.now().toString());
             book.setTransRef(content.getFlowParams().get("transRef")+"");
 
-<<<<<<< HEAD
-=======
             logger.info("Inside Book Service!!!!");
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
             return bookRepo.save(book);
         }catch (BookServiceException bookServiceException){
             throw new BookServiceException(bookServiceException.getErrorReason(), bookServiceException.getErrorDescription());
@@ -122,24 +106,16 @@ public class BookService {
         return Optional.ofNullable(checkBookAvailabilty.orElseThrow().stream().toList());
     }*/
 
-<<<<<<< HEAD
-    public List<Book> getBook(String authorName)throws InterruptedException {
-        // Attempt to retrieve books by author name
-        //Thread.sleep(1000000);
-=======
     @Cacheable(value = "booksRecord", key="#authorName")
     public List<Book> getBook(String authorName)throws InterruptedException {
         // Attempt to retrieve books by author name
         //Thread.sleep(1000000);
         logger.info("Inside Book Service!!!");
->>>>>>> bc5fa73 (First commit with root directory and submodules)
         List<Book> books = bookRepo.findByAuthorName(authorName)
                 .orElseThrow(() -> new RuntimeException("Books not available for the author: " + authorName));
         return books; // Directly return the list of books
     }
 
-<<<<<<< HEAD
-=======
     @Cacheable(value = "allBooks", key="#result")
     public int getAllBook(){
         int record=bookRepo.findAll().size();
@@ -241,5 +217,4 @@ public class BookService {
         }
     }
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 }

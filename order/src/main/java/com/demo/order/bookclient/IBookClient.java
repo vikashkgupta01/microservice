@@ -10,28 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.awt.print.Book;
 import java.util.List;
 
-<<<<<<< HEAD
-@FeignClient(name="book")//, fallback =BookClientFallBack.class )
-public interface IBookClient {
-
-    /*@GetMapping("/book/test/{name}")
-    ResponseEntity<String> testConnectivity(@PathVariable String name);*/
-
-=======
 @FeignClient(name="book", fallback =BookClientFallBack.class )
 public interface IBookClient {
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
     @GetMapping("/book/check/{authorName}")
      ResponseEntity<List<Book>> getBookList(@PathVariable String authorName);
 
 
-<<<<<<< HEAD
-=======
     /*@GetMapping("/book/test/{name}")
     ResponseEntity<String> testConnectivity(@PathVariable String name);*/
 
->>>>>>> bc5fa73 (First commit with root directory and submodules)
 
     /*@RateLimiter(name = "bookServiceRateLimiter", fallbackMethod = "rateLimiterFallback")
     @CircuitBreaker(name = "bookServiceCircuitBreaker", fallbackMethod = "circuitBreakerFallback")
