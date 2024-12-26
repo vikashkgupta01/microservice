@@ -1,19 +1,12 @@
 server:
-<<<<<<< Updated upstream
   port: 4444  # Gateway runs on port 8080
-
-
-=======
-  port: 4444  # Gateway runs on port 4444
->>>>>>> Stashed changes
 
 spring:
   application:
     name: gateway-service
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
+
+
   cloud:
     gateway:
       discovery:
@@ -24,7 +17,7 @@ spring:
         - id: book
           uri: lb://book  # Use the service name from Eureka
           predicates:
-<<<<<<< Updated upstream
+
             - Path=/book/**  # Route requests matching /books/** to Book-Service
 
         - id: order
@@ -32,7 +25,6 @@ spring:
           predicates:
             - Path=/bookOrder/**  # Route requests matching /orders/** to Order-Service
 
-=======
             - Path=/book/**  # Route requests matching /book/** to Book-Service
 
         - id: order
@@ -47,7 +39,7 @@ spring:
   main:
     web-application-type: reactive
     allow-bean-definition-overriding: true
->>>>>>> Stashed changes
+
 
 eureka:
   client:
@@ -58,17 +50,17 @@ eureka:
   instance:
     prefer-ip-address: true
 
-<<<<<<< Updated upstream
-logging:
-  level:
-    org.springframework.security: DEBUG
-=======
-management:
-  metrics:
-    enabled: false
 
 logging:
   level:
     org.springframework.security: DEBUG
+
+management:
+  metrics:
+    enabled: false
+
+#logging:
+ # level:
+  #  org.springframework.security: DEBUG
     org.springframework.web: DEBUG
->>>>>>> Stashed changes
+
